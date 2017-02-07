@@ -1,0 +1,18 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  $(function() {
+    $.ajax({
+      url: 'http://127.0.0.1:3000/users/johnnylaw/todos.json',
+      method: 'GET',
+      success: function(data) {
+        alert(data['todos'][0]['name']);
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+</body>
+</html>
