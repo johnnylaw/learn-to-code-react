@@ -15,9 +15,12 @@ class TodosController < ApplicationController
 
   def update
     todo = Todo.find_by(id: params[:id], username: params[:username])
-    if todo.present? && params.has_key?(:todo)
-      todo.update completed: params[:todo][:completed]
-      render json: { todo: todo }
+    if todo.present?
+      if todo.update todo_params
+        render json: { todo: todo }
+      else
+        render status: 422, json: { errors: todo.errors.full_messages }
+      end
     else
       render status: 404, json: { errors: ['Not found'] }
     end

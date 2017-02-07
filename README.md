@@ -1,24 +1,34 @@
-# README
+# API Documentation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```*GET https://learn-to-code-react.herokuapp.com/users/:username/todos.json*
+Response body:
+ { todos: [
+   { id: Integer, username: String, name: String, completed: Boolean, created_at: String, updated_at: String }
+ ]}
+```
 
-Things you may want to cover:
+```*PATCH https://learn-to-code-react.herokuapp.com/users/:username/todos/:id.json*
+Request body:
+ { todo: {
+   { name: String (optional), completed: Boolean (optional) }
+ }}
+Response body (success):
+ { todo:
+   { id: Integer, username: String, name: String, completed: Boolean, created_at: String, updated_at: String }
+ }
+Response body (errors 404, 422):
+ { errors: [String] }
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```*POST https://learn-to-code-react.herokuapp.com/users/:username/todos.json*
+Request body:
+ { todo: {
+   { name: String }
+ }}
+Response body (success):
+ { todo:
+   { id: Integer, username: String, name: String, completed: Boolean, created_at: String, updated_at: String }
+ }
+Response body (errors 404, 422):
+ { errors: [String] }
+```
