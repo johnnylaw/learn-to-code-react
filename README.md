@@ -35,3 +35,9 @@ Response body (success):
 Response body (errors 404, 422):
  { errors: [String] }
 ```
+
+```
+*DELETE https://learn-to-code-react.herokuapp.com/users/:username/todos/:id.json*
+Response body (success):
+{}
+```
