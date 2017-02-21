@@ -1,11 +1,11 @@
 class TodosController < ApplicationController
   def index
-    todos = Todo.where(username: params[:username])
+    todos = Todo.where(username: params[:user_id])
     render json: { todos: todos }
   end
 
   def create
-    todo = Todo.new todo_params.merge(username: params[:username])
+    todo = Todo.new todo_params.merge(username: params[:user_id])
     if todo.save
       render json: { todo: todo }
     else
@@ -14,7 +14,7 @@ class TodosController < ApplicationController
   end
 
   def update
-    todo = Todo.find_by(id: params[:id], username: params[:username])
+    todo = Todo.find_by(id: params[:id], username: params[:user_id])
     if todo.present?
       if todo.update todo_params
         render json: { todo: todo }
